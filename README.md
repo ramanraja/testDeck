@@ -1,16 +1,17 @@
-testDeck
-========
+Rajaraman's fork of the testDeck
+=============================
 
 
 This is my fork of bcafo's test deck for publishing a slidify document.
 
 Made an edit to this readme file on gh-pages branch. 
 
-Go to username.github.io/testDeck/index.html
-And the presentation should be rendered
+Go to ramanraja.github.io/testDeck/index.html
 
+The full url is:
 
-Go to username.github.io/testDeck/index.html
-And the presentation should be rendered
+http://ramanraja.github.io/testDeck/index.html
+
+The presentation should be rendered.
 
 
