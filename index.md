@@ -1,7 +1,7 @@
 ---
 title       : Linear and Quadratic Models
 subtitle    : 
-author      : Rajaraman V
+author      : Rajaraman V.
 job         : 
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
