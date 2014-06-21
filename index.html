@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Test deck</title>
+  <title>Linear and Quadratic Models</title>
   <meta charset="utf-8">
-  <meta name="description" content="Test deck">
-  <meta name="author" content="">
+  <meta name="description" content="Linear and Quadratic Models">
+  <meta name="author" content="Rajaraman">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -15,14 +15,12 @@
   <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
 
-  
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
   <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
   <script data-main="libraries/frameworks/io2012/js/slides" 
     src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
-  
   
 
 </head>
@@ -32,9 +30,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Test deck</h1>
+    <h1>Linear and Quadratic Models</h1>
     <h2></h2>
-    <p><br/></p>
+    <p>Rajaraman<br/></p>
   </hgroup>
   <article></article>  
 </slide>
@@ -43,28 +41,99 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Read-And-Delete</h2>
+    <h2>Linear Models in R</h2>
   </hgroup>
   <article data-timings="">
     <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
+<li>the lm() command in R is used to fit linear regression models</li>
+<li><p>Let us call the dependent variable Y and independent variable X</p>
+
+<p>The equation of the regression line is Y = aX + b</p></li>
+<li><p>Sometimes, the relation between Y and X will not be exactly linear</p></li>
+<li><p>So we may have to fit a more complex model</p></li>
+<li><p>In this Shiny example, we fit a quadratic model (degree 2).</p></li>
+<li><p>Comparing the performance of the quadratic with the linear model is informative.</p></li>
 </ol>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="class" id="id" style="background:;">
+<slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Car Mileage Study</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">plot(1:10, 1:10)
+    <ol>
+<li>We use the mtcars data set in R to illustrate the point.</li>
+<li>X is wt, the weight of the car. Y is mpg, the miles per gallon.</li>
+</ol>
+
+<pre><code class="r">data(mtcars)
+plot(mtcars$wt, mtcars$mpg, pch = 19)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-1.png" alt="plot of chunk unnamed-chunk-1"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Linear Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Let us first fit a linear model. The regression line is shown in red.</li>
+<li>The goodness of fit is indicated by the sum of squares of residual errors.</li>
+<li>The least squares error for our linear model is 287.3.</li>
+</ol>
+
+<pre><code class="r">plot(mtcars$wt, mtcars$mpg, pch = 19)
+abline(lm(mtcars$mpg ~ mtcars$wt), col = &quot;red&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Quadratic Model</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>With a degree-2 model fit, the lest squares error reduces to 203.7</li>
+</ol>
+
+<pre><code class="r">plot(mtcars$wt, mtcars$mpg, pch = 19)
+lm1 = lm(mtcars$mpg ~ mtcars$wt + I(mtcars$wt^2))
+ord = order(mtcars$wt)
+lines(mtcars$wt[ord], predict(lm1)[ord], col = &quot;red&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>The Tiny Shiny App</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The finished Shiny application: <a href="https://ramanraja.shinyapps.io/shiny2/">https://ramanraja.shinyapps.io/shiny2/</a></li>
+<li>Shiny enables the app to be interactive on the web.</li>
+<li>You can choose between a linear and quadratic models.</li>
+<li>Select the model on the left panel and push the button to see the effect.</li>
+</ol>
+
+<p>Thank you !</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -76,14 +145,32 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='Linear Models in R'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='Car Mileage Study'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Linear Model'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Quadratic Model'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='The Tiny Shiny App'>
+         5
       </a>
     </li>
   </ul>
